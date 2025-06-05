@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Meri Jan - Professional</title>
+    <title>Happy Birthday Meri Jan</title>
     <style>
         * {
             margin: 0;
@@ -31,7 +31,7 @@
             align-items: center;
         }
 
-        /* 3D Floating Hearts */
+        /* Hearts Animation */
         .heart-3d {
             position: absolute;
             font-size: 24px;
@@ -43,16 +43,6 @@
             animation: float3D 6s ease-in-out infinite;
             transform-style: preserve-3d;
             filter: drop-shadow(0 5px 10px rgba(231, 76, 60, 0.4));
-        }
-
-        .heart-3d:nth-child(odd) {
-            animation-delay: -2s;
-            animation-duration: 8s;
-        }
-
-        .heart-3d:nth-child(even) {
-            animation-delay: -4s;
-            animation-duration: 7s;
         }
 
         @keyframes float3D {
@@ -74,7 +64,7 @@
             }
         }
 
-        /* Professional Birthday Card */
+        /* Birthday Card */
         .birthday-card {
             background: linear-gradient(145deg, #fff, #f8f9fa);
             box-shadow: 
@@ -91,21 +81,7 @@
         }
 
         .birthday-card.hidden {
-            animation: professionalFadeOut 1.5s ease-in-out forwards;
-        }
-
-        .birthday-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            border-radius: 32px;
-            z-index: -1;
-            filter: blur(8px);
-            opacity: 0.7;
+            animation: fadeOut 1.5s ease-in-out forwards;
         }
 
         .birthday-card h1 {
@@ -117,7 +93,6 @@
             font-weight: 700;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: textShimmer 2s ease-in-out infinite alternate;
         }
 
         .birthday-card p {
@@ -128,27 +103,47 @@
             text-transform: uppercase;
         }
 
-        @keyframes cardFloat {
-            0%, 100% { transform: translateY(0px) rotateY(0deg); }
-            50% { transform: translateY(-15px) rotateY(2deg); }
+        /* Start Button */
+        .start-button {
+            background: linear-gradient(145deg, #feca57, #ff6b6b);
+            color: #2c3e50;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 
+                0 15px 30px rgba(254, 202, 87, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 40px;
+            z-index: 15;
+            position: relative;
         }
 
-        @keyframes textShimmer {
-            0% { filter: brightness(1) saturate(1); }
-            100% { filter: brightness(1.2) saturate(1.3); }
+        .start-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 25px 50px rgba(254, 202, 87, 0.6),
+                inset 0 2px 4px rgba(255, 255, 255, 0.4);
         }
 
-        @keyframes professionalFadeOut {
-            0% { opacity: 1; transform: scale(1) rotateY(0deg); }
-            100% { opacity: 0; transform: scale(0.7) rotateY(90deg); }
+        .start-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-out;
         }
 
-        /* Professional Cake Design */
+        /* Cake Container */
         .cake-container {
             display: none;
             flex-direction: column;
             align-items: center;
-            animation: elegantEntrance 2s ease-out;
+            animation: fadeIn 2s ease-out;
         }
 
         .cake-container.show {
@@ -249,17 +244,7 @@
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
 
-        @keyframes flameFlicker {
-            0% { transform: rotate(-3deg) scale(1); }
-            100% { transform: rotate(3deg) scale(1.1); }
-        }
-
-        @keyframes elegantEntrance {
-            0% { opacity: 0; transform: translateY(100px) scale(0.8); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* Professional Button */
+        /* Knife Button */
         .knife-button {
             background: linear-gradient(145deg, #e74c3c, #c0392b);
             color: white;
@@ -274,7 +259,6 @@
                 inset 0 2px 4px rgba(255, 255, 255, 0.2);
             transform: translateY(0);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: buttonGlow 2s ease-in-out infinite;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin: 0 auto;
@@ -288,18 +272,13 @@
                 inset 0 2px 4px rgba(255, 255, 255, 0.3);
         }
 
-        @keyframes buttonGlow {
-            0%, 100% { box-shadow: 0 15px 30px rgba(231, 76, 60, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.2); }
-            50% { box-shadow: 0 15px 30px rgba(231, 76, 60, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.4); }
-        }
-
-        /* Final Image Container */
+        /* Final Container */
         .final-container {
             display: none;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            animation: grandReveal 2s ease-out;
+            animation: fadeIn 2s ease-out;
             position: relative;
         }
 
@@ -315,7 +294,7 @@
                 0 30px 60px rgba(0, 0, 0, 0.3),
                 0 0 50px rgba(231, 76, 60, 0.3);
             border: 5px solid rgba(255, 255, 255, 0.9);
-            animation: imageFloat 4s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
 
         .love-message {
@@ -337,37 +316,38 @@
             font-weight: 600;
             line-height: 1.6;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            animation: textPulse 3s ease-in-out infinite;
+            animation: pulse 3s ease-in-out infinite;
         }
 
-        @keyframes grandReveal {
-            0% { opacity: 0; transform: scale(0.3) rotateY(180deg); }
-            100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes imageFloat {
-            0%, 100% { transform: translateY(0px) rotateZ(0deg); }
-            50% { transform: translateY(-10px) rotateZ(1deg); }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.8); }
         }
 
-        @keyframes textPulse {
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.9; }
             50% { transform: scale(1.02); opacity: 1; }
         }
 
-        /* Scrollbar Styling */
-        .love-message::-webkit-scrollbar {
-            width: 8px;
+        @keyframes flameFlicker {
+            0% { transform: rotate(-3deg) scale(1); }
+            100% { transform: rotate(3deg) scale(1.1); }
         }
 
-        .love-message::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-        }
-
-        .love-message::-webkit-scrollbar-thumb {
-            background: linear-gradient(145deg, #e74c3c, #c0392b);
-            border-radius: 4px;
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
         /* Responsive Design */
@@ -398,7 +378,7 @@
 </head>
 <body>
     <div class="container" id="container">
-        <!-- 3D Floating Hearts -->
+        <!-- Floating Hearts -->
         <div class="heart-3d" style="top: 10%; left: 10%;">❤️</div>
         <div class="heart-3d" style="top: 20%; right: 15%;">💖</div>
         <div class="heart-3d" style="top: 30%; left: 5%;">💕</div>
@@ -412,20 +392,22 @@
         <div class="heart-3d" style="top: 55%; left: 90%;">💕</div>
         <div class="heart-3d" style="top: 75%; right: 90%;">❤️</div>
 
-        <!-- Professional Birthday Card -->
+        <!-- Birthday Card -->
         <div class="birthday-card" id="birthdayCard">
             <h1>🎉 Happy Birthday 🎉</h1>
             <p>Meri Jan</p>
         </div>
 
-        <!-- Professional Cake Container -->
+        <!-- Start Button -->
+        <button class="start-button" id="startButton">Touch this meri duniya</button>
+
+        <!-- Cake Container -->
         <div class="cake-container" id="cakeContainer">
             <div class="cake">
                 <div class="cake-base"></div>
                 <div class="cake-text">HAPPY BIRTHDAY<br>MERI QUEEN</div>
                 <div class="cake-layer"></div>
                 <div class="cake-top">
-            
                     <div class="candles">
                         <div class="candle"><div class="flame"></div></div>
                         <div class="candle"><div class="flame"></div></div>
@@ -438,24 +420,33 @@
             <button class="knife-button" id="knifeButton">🔪 Cut the Cake 🔪</button>
         </div>
 
-        <!-- Final Image with Love Message -->
+        <!-- Final Container -->
         <div class="final-container" id="finalContainer">
             <img class="final-image" id="finalImage" src="WhatsApp Image 2025-06-05 at 16.22.23.jpeg" alt="Special Birthday Image">
-            
             <div class="love-message">
-                <div class="love-text" id="loveText">
-                    <!-- Love message will be generated here -->
-                </div>
+                <div class="love-text" id="loveText"></div>
             </div>
         </div>
     </div>
 
-    <script>
-        let currentStep = 1;
+    <!-- Audio Element -->
+    <audio id="birthdayMusic" loop>
+        <source src="01-Monk-Turner-Fascinoma-Its-Your-Birthday(chosic.com).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
+    <script>
+        // Initialize variables
+        let currentStep = 1;
+        const audio = document.getElementById('birthdayMusic');
+        const startButton = document.getElementById('startButton');
+        const birthdayCard = document.getElementById('birthdayCard');
+        const cakeContainer = document.getElementById('cakeContainer');
+        const finalContainer = document.getElementById('finalContainer');
+
+        // Generate love message
         function generateLoveMessage() {
             const message = "I LOVE U MERI JAN ";
-            const repetitions = 2000; // Representing "thousands of septillions" with manageable amount
             let fullMessage = "";
             
             for (let i = 0; i < 1; i++) {
@@ -465,41 +456,40 @@
                 }
             }
             
-            // Add special ending
             fullMessage += "<br><br>💖 FOREVER AND ALWAYS 💖<br>";
             fullMessage += "💕 THOUSANDS OF SEPTILLIONS OF TIMES 💕";
             
             return fullMessage;
         }
 
+        // Handle animation steps
         function nextStep() {
             if (currentStep === 1) {
-                // Hide birthday card and show cake
-                document.getElementById('birthdayCard').classList.add('hidden');
+                birthdayCard.classList.add('hidden');
+                startButton.classList.add('hidden');
                 setTimeout(() => {
-                    document.getElementById('birthdayCard').style.display = 'none';
-                    document.getElementById('cakeContainer').classList.add('show');
+                    birthdayCard.style.display = 'none';
+                    startButton.style.display = 'none';
+                    cakeContainer.classList.add('show');
                     currentStep = 2;
                 }, 1500);
             } else if (currentStep === 2) {
-                // Show final image with love message
-                document.getElementById('cakeContainer').style.display = 'none';
-                document.getElementById('finalContainer').classList.add('show');
-                
-                // Generate and display love message
+                cakeContainer.style.display = 'none';
+                finalContainer.classList.add('show');
                 document.getElementById('loveText').innerHTML = generateLoveMessage();
-                
                 currentStep = 3;
             }
         }
 
-        // Auto-advance from card to cake after 4 seconds for better effect
-        setTimeout(nextStep, 4000);
+        // Add event listeners
+        startButton.addEventListener('click', () => {
+            audio.play();
+            nextStep();
+        });
 
-        // Knife button click handler
         document.getElementById('knifeButton').addEventListener('click', nextStep);
 
-        // Create more dynamic 3D hearts
+        // Create floating hearts
         function create3DHearts() {
             const heartsContainer = document.getElementById('container');
             const heartEmojis = ['❤️', '💖', '💕', '💗', '💝'];
@@ -514,29 +504,21 @@
                 heart.style.fontSize = (Math.random() * 16 + 20) + 'px';
                 heartsContainer.appendChild(heart);
                 
-                // Remove heart after animation cycle
                 setTimeout(() => {
                     heart.remove();
                 }, 8000);
             }
         }
 
-        // Create new 3D hearts every 3 seconds
+        // Create hearts every 3 seconds
         setInterval(create3DHearts, 3000);
 
-        // Add professional touch - smooth scrolling for love message
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth entrance animation to all elements
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
         });
     </script>
-
-    <!-- Add this audio tag for background music -->
-    <audio autoplay loop>
-        <source src="01-Monk-Turner-Fascinoma-Its-Your-Birthday(chosic.com).mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
 </body>
-</html>
+</html> 
